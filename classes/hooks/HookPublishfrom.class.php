@@ -45,7 +45,7 @@ class PluginNewpublishfrom_HookPublishfrom extends Hook {
 					$this->Viewer_Assign("oAuthorId", $oAuthorId);
 				}
 			}
-			$aUserList = $this->PluginNewpublishfrom_Publishfrom_GetUserList($oUserCurrent, $oAuthorId);
+			$aUserList = $this->PluginNewpublishfrom_Publishfrom_GetUserList($oUserCurrent->getId(), $oAuthorId);
 			$this->Viewer_Assign("oUserCurrent",$oUserCurrent);
 			$this->Viewer_Assign("sSelectName",Config::Get('plugin.newpublishfrom.select_name'));
 			$this->Viewer_Assign("aUserList",$aUserList);
