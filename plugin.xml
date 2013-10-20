@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+        <name>
+                <lang name="default">PublishFrom</lang>
+                <lang name="russian">Публикация от имени</lang>
+        </name>
+        <author>
+                <lang name="default">Artem Soshnikov</lang>
+                <lang name="russian">Артем Сошников</lang>
+        </author>
+        <homepage>http://svoyastranica.ru</homepage>
+        <version>0.1</version>
+        <requires>
+                <livestreet>0.5.0</livestreet>
+                <plugins>
+
+                </plugins>
+        </requires>
+        <description>
+                <lang name="default">Enable to publish topic from another user (on for admin)</lang>
+                <lang name="russian">Позволяет публиковать топики от другого имени (только для админа)</lang>
+        </description>
+        <delegate>
+                <module></module>
+                <action></action>
+                <template></template>
+                <entity></entity>
+        </delegate>
+</plugin>
