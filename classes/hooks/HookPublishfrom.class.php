@@ -1,6 +1,6 @@
 <?php
 
-class PluginPublishfrom_HookPublishfrom extends Hook {
+class PluginNewpublishfrom_HookPublishfrom extends Hook {
 	public function RegisterHook() {
 		$this->AddHook('topic_add_after','topic_after');
 		$this->AddHook('topic_edit_after','topic_after');
@@ -17,7 +17,7 @@ class PluginPublishfrom_HookPublishfrom extends Hook {
 		$oBlog = $arg['oBlog'];
 		$oUser = $this->User_GetUserCurrent();
 		if($oUser->isAdministrator()){
-			$uid = getRequest(Config::Get('plugin.publishfrom.select_name'));
+			$uid = getRequest(Config::Get('plugin.newpublishfrom.select_name'));
 			if(!$uid)
 				$uid = $oUser->getId();
 			$oTopic = $this->Topic_GetTopicById($oTopic->getId());
@@ -32,7 +32,7 @@ class PluginPublishfrom_HookPublishfrom extends Hook {
 
 			$oTopic->setUser($this->User_GetUserById($uid));
 			$oTopic->setUserId($uid);
-			$this->PluginPublishfrom_Publishfrom_UpdateTopic($oTopic);
+			$this->PluginNewpublishfrom_Publishfrom_UpdateTopic($oTopic);
 		}
 	}
 
@@ -45,9 +45,9 @@ class PluginPublishfrom_HookPublishfrom extends Hook {
 					$this->Viewer_Assign("oAuthorId", $oAuthorId);
 				}
 			}
-			$aUserList = $this->PluginPublishfrom_Publishfrom_GetUserList($oUserCurrent, $oAuthorId);
+			$aUserList = $this->PluginNewpublishfrom_Publishfrom_GetUserList($oUserCurrent, $oAuthorId);
 			$this->Viewer_Assign("oUserCurrent",$oUserCurrent);
-			$this->Viewer_Assign("sSelectName",Config::Get('plugin.publishfrom.select_name'));
+			$this->Viewer_Assign("sSelectName",Config::Get('plugin.newpublishfrom.select_name'));
 			$this->Viewer_Assign("aUserList",$aUserList);
 			return $this->Viewer_Fetch(Plugin::GetTemplatePath(__CLASS__).'form_select.tpl');
 		}

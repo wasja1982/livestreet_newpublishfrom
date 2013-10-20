@@ -1,6 +1,6 @@
 <?php
 
-class PluginPublishfrom_ModulePublishfrom extends Module {
+class PluginNewpublishfrom_ModulePublishfrom extends Module {
 
 	// Все запросы кешируются на уровне пользовательской стены
 	protected $oMapper;

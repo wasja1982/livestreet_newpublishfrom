@@ -3,7 +3,7 @@ if (! class_exists ( 'Plugin' )) {
 	die ( 'Hacking attemp!' );
 }
 
-class PluginPublishfrom extends Plugin {
+class PluginNewpublishfrom extends Plugin {
 	public function Activate() {
 		return true;
 	}

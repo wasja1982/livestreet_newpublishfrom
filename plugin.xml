@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin>
         <name>
-                <lang name="default">PublishFrom</lang>
-                <lang name="russian">Публикация от имени</lang>
+                <lang name="default">New PublishFrom</lang>
         </name>
         <author>
-                <lang name="default">Artem Soshnikov</lang>
-                <lang name="russian">Артем Сошников</lang>
+                <lang name="default">Artem Soshnikov, Alexandr Verenik</lang>
+                <lang name="russian">Артем Сошников, Александр Вереник</lang>
         </author>
-        <homepage>http://svoyastranica.ru</homepage>
-        <version>0.1</version>
+        <homepage>https://github.com/wasja1982/livestreet_newpublishfrom</homepage>
+        <version>1.0.0</version>
         <requires>
-                <livestreet>0.5.0</livestreet>
+                <livestreet>1.0.3</livestreet>
                 <plugins>
 
                 </plugins>
