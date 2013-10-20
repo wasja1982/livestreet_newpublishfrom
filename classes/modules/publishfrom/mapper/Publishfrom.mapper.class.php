@@ -4,11 +4,14 @@ function addcslash($str) {
 }
 
 class PluginPublishfrom_ModulePublishfrom_MapperPublishfrom extends Mapper {
-	public function getUserList(){
+	public function getUserList($current = null){
 		$users = Config::Get('plugin.publishfrom.user_logins');
 		$ids = Config::Get('plugin.publishfrom.user_ids');
 		$expr = Config::Get('plugin.publishfrom.user_id_expression');
 		if(is_array($users)){			$users = array_unique(array_map("addcslash", $users));
+			if (isset($current)) {				$key = array_search($current->getLogin(), $users);
+				if ($key !== false) unset($users[$key]);
+			}
 			$logins_in = '\''.implode("','", $users).'\'';
 		}
 		if($expr){
@@ -20,6 +23,10 @@ class PluginPublishfrom_ModulePublishfrom_MapperPublishfrom extends Mapper {
 		}
 		if(is_array($ids)){
 			$ids = array_unique(array_map("intval", $ids), SORT_NUMERIC);
+			if (isset($current)) {
+				$key = array_search($current->getId(), $ids);
+				if ($key !== false) unset($ids[$key]);
+			}
 			$ids_in = implode(",", $ids);
 		}
 		if($logins_in||$ids_in){
