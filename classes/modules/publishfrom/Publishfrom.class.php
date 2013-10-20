@@ -9,9 +9,8 @@ class PluginPublishfrom_ModulePublishfrom extends Module {
 		$this->oMapper = Engine::GetMapper ( __CLASS__ );
 	}
 
-	public function GetUserList(){
-		$oUserCurrent = $this->User_GetUserCurrent();
-		return $aUserList = $this->oMapper->getUserList($oUserCurrent);
+	public function GetUserList($oUserCurrent = null, $oAuthorId = null){
+		return $aUserList = $this->oMapper->getUserList($oUserCurrent, $oAuthorId);
 	}
 
 	public function UpdateTopic($oTopic){

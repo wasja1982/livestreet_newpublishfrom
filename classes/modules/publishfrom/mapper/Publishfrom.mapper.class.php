@@ -4,10 +4,11 @@ function addcslash($str) {
 }
 
 class PluginPublishfrom_ModulePublishfrom_MapperPublishfrom extends Mapper {
-	public function getUserList($current = null){
+	public function getUserList($current = null, $author = null){
 		$users = Config::Get('plugin.publishfrom.user_logins');
 		$ids = Config::Get('plugin.publishfrom.user_ids');
 		$expr = Config::Get('plugin.publishfrom.user_id_expression');
+		if (isset($author)) {			$ids[] = $author;		}
 		if(is_array($users)){			$users = array_unique(array_map("addcslash", $users));
 			if (isset($current)) {				$key = array_search($current->getLogin(), $users);
 				if ($key !== false) unset($users[$key]);
