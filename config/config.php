@@ -16,4 +16,7 @@ $config['user_id_expression'] = '13-215';
 /*Имя элемента формы*/
 $config['select_name'] = 'publishfrom';
 
+/*Изменять пользователя только при публикации*/
+$config['only_publish'] = false;
+
 return $config;

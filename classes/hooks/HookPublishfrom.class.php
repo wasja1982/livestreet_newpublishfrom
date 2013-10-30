@@ -22,17 +22,16 @@ class PluginNewpublishfrom_HookPublishfrom extends Hook {
 				$uid = $oUser->getId();
 			$oTopic = $this->Topic_GetTopicById($oTopic->getId());
 
-			if($oBlog->getType() == 'personal'){
-				if($oTopic->getPublish()){
+			if (!Config::Get('plugin.newpublishfrom.only_publish') || $oTopic->getPublish()) {				if($oBlog->getType() == 'personal'){
 					$oBlogNew = $this->Blog_GetPersonalBlogByUserId($uid);
 					$oTopic->setBlog($oBlogNew);
 					$oTopic->setBlogId($oBlogNew->getId());
 				}
-			}
 
-			$oTopic->setUser($this->User_GetUserById($uid));
-			$oTopic->setUserId($uid);
-			$this->PluginNewpublishfrom_Publishfrom_UpdateTopic($oTopic);
+				$oTopic->setUser($this->User_GetUserById($uid));
+				$oTopic->setUserId($uid);
+				$this->PluginNewpublishfrom_Publishfrom_UpdateTopic($oTopic);
+			}
 		}
 	}
 
