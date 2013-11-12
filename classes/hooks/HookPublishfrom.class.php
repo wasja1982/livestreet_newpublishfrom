@@ -8,8 +8,6 @@ class PluginNewpublishfrom_HookPublishfrom extends Hook {
 		$this->AddHook('template_form_add_topic_link_end','template_form_add_topic_topic_end');
 		$this->AddHook('template_form_add_topic_question_end','template_form_add_topic_topic_end');
 		$this->AddHook('template_form_add_topic_photoset_end','template_form_add_topic_topic_end');
-
-		$this->AddHook('template_publishfrom_theme_select','publishfrom_theme_select');
 	}
 
 	public function topic_after($arg){
@@ -22,7 +20,8 @@ class PluginNewpublishfrom_HookPublishfrom extends Hook {
 				$uid = $oUser->getId();
 			$oTopic = $this->Topic_GetTopicById($oTopic->getId());
 
-			if (!Config::Get('plugin.newpublishfrom.only_publish') || $oTopic->getPublish()) {				if($oBlog->getType() == 'personal'){
+			if (!Config::Get('plugin.newpublishfrom.only_publish') || $oTopic->getPublish()) {
+				if($oBlog->getType() == 'personal'){
 					$oBlogNew = $this->Blog_GetPersonalBlogByUserId($uid);
 					$oTopic->setBlog($oBlogNew);
 					$oTopic->setBlogId($oBlogNew->getId());
@@ -39,8 +38,10 @@ class PluginNewpublishfrom_HookPublishfrom extends Hook {
 		if($this->User_GetUserCurrent()->isAdministrator()){
 			$oUserCurrent = $this->User_GetUserCurrent();
 			$oAuthorId = null;
-			if (Router::GetActionEvent() == 'edit') {				$oTopic = $this->Topic_GetTopicById(Router::GetParam(0));
-				if (isset($oTopic)) {					$oAuthorId = $oTopic->getUserId();
+			if (Router::GetActionEvent() == 'edit') {
+				$oTopic = $this->Topic_GetTopicById(Router::GetParam(0));
+				if (isset($oTopic)) {
+					$oAuthorId = $oTopic->getUserId();
 					$this->Viewer_Assign("oAuthorId", $oAuthorId);
 				}
 			}
