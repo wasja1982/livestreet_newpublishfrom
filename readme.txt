@@ -1,6 +1,6 @@
 Плагин "New PublishFrom" (версия 1.0.0) для LiveStreet 1.0.3
 
-Основан на плагине Основан на плагине "PublishFrom" (автор: Артем Сошников) - https://catalog.livestreetcms.com/addon/view/170/
+Основан на плагине "PublishFrom" (автор: Артем Сошников) - https://catalog.livestreetcms.com/addon/view/170/
 
 
 
