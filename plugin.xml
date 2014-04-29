@@ -1,28 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin>
-        <name>
-                <lang name="default">New PublishFrom</lang>
-        </name>
-        <author>
-                <lang name="default">Artem Soshnikov, Alexandr Verenik</lang>
-                <lang name="russian">Артем Сошников, Александр Вереник</lang>
-        </author>
-        <homepage>https://github.com/wasja1982/livestreet_newpublishfrom</homepage>
-        <version>1.0.0</version>
-        <requires>
-                <livestreet>1.0.3</livestreet>
-                <plugins>
-
-                </plugins>
-        </requires>
-        <description>
-                <lang name="default">Enable to publish topic from another user (on for admin)</lang>
-                <lang name="russian">Позволяет публиковать топики от другого имени (только для админа)</lang>
-        </description>
-        <delegate>
-                <module></module>
-                <action></action>
-                <template></template>
-                <entity></entity>
-        </delegate>
+    <name>
+        <lang name="default">New PublishFrom</lang>
+        <lang name="russian">Публикация от чужого имени</lang>
+    </name>
+    <author>
+        <lang name="default">Artem Soshnikov, Alexandr Verenik</lang>
+        <lang name="russian">Артем Сошников, Александр Вереник</lang>
+    </author>
+    <homepage>https://github.com/wasja1982/livestreet_newpublishfrom</homepage>
+    <version>1.0.1</version>
+    <requires>
+        <livestreet>1.0.3</livestreet>
+        <plugins>
+        </plugins>
+    </requires>
+    <description>
+        <lang name="default">Enable to publish topics and comments from another user (on for admin)</lang>
+        <lang name="russian">Позволяет публиковать топики и комментарии от другого имени (только для админа)</lang>
+    </description>
 </plugin>
