@@ -25,9 +25,11 @@ class PluginNewpublishfrom_ModulePublishfrom extends Module {
     }
 
     public function UpdateTopic($oTopic){
-        $res = $this->oMapper->UpdateTopic($oTopic);
-        $this->Cache_Clean(Zend_Cache::CLEANING_MODE_MATCHING_TAG,array('topic_update',"topic_update_user_{$oTopic->getUserId()}","topic_update_blog_{$oTopic->getBlogId()}"));
-        $this->Cache_Delete("topic_{$oTopic->getId()}");
-        return $res;
+        if ($this->oMapper->UpdateTopic($oTopic)) {
+            $this->Cache_Clean(Zend_Cache::CLEANING_MODE_MATCHING_TAG,array('topic_update',"topic_update_user_{$oTopic->getUserId()}","topic_update_blog_{$oTopic->getBlogId()}"));
+            $this->Cache_Delete("topic_{$oTopic->getId()}");
+            return true;
+        }
+        return false;
     }
 }

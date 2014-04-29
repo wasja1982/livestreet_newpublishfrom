@@ -58,7 +58,6 @@ class PluginNewpublishfrom_ModulePublishfrom_MapperPublishfrom extends Mapper {
                 topic_id = ?d
         ";
         if ($this->oDb->query($sql,$oTopic->getUserId(),$oTopic->getBlogId(),$oTopic->getId())) {
-            //$this->UpdateTopicContent($oTopic);
             return true;
         }
         return false;
