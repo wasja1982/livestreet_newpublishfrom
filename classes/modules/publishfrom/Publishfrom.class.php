@@ -32,4 +32,13 @@ class PluginNewpublishfrom_ModulePublishfrom extends Module {
         }
         return false;
     }
+
+    public function UpdateComment($oComment) {
+        if ($this->oMapper->UpdateComment($oComment)) {
+            $this->Cache_Clean(Zend_Cache::CLEANING_MODE_MATCHING_TAG,array("comment_update","comment_update_{$oComment->getTargetType()}_{$oComment->getTargetId()}"));
+            $this->Cache_Delete("comment_{$oComment->getId()}");
+            return true;
+        }
+        return false;
+    }
 }

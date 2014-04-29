@@ -6,5 +6,5 @@
 		<option value="{$item.user_id}"{if $oAuthorId==$item.user_id}selected="selected"{/if}>{$item.user_login}</option>
 		{/foreach}
 	</select>
-	<span class="note">{$aLang.plugin.newpublishfrom.publishfrom_note}</span>
+	<span class="note">{if $bTopic}{$aLang.plugin.newpublishfrom.publishfrom_note_topic}{else}{$aLang.plugin.newpublishfrom.publishfrom_note_comment}{/if}</span>
 </p>

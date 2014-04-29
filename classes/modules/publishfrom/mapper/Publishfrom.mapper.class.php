@@ -62,4 +62,17 @@ class PluginNewpublishfrom_ModulePublishfrom_MapperPublishfrom extends Mapper {
         }
         return false;
     }
+
+    public function UpdateComment($oComment) {
+        $sql = "UPDATE ".Config::Get('db.table.comment')."
+            SET
+                user_id= ?d
+            WHERE
+                comment_id = ?d
+        ";
+        if ($this->oDb->query($sql,$oComment->getUserId(),$oComment->getId())) {
+            return true;
+        }
+        return false;
+    }
 }

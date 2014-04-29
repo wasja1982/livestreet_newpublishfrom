@@ -30,4 +30,7 @@ $config['select_name'] = 'publishfrom';
 // Изменять пользователя только при публикации
 $config['only_publish'] = false;
 
+// Разрешить изменять пользователя для комментариев
+$config['for_comments'] = true;
+
 return $config;

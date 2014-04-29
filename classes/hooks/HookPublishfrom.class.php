@@ -19,6 +19,11 @@ class PluginNewpublishfrom_HookPublishfrom extends Hook {
         $this->AddHook('template_form_add_topic_link_end','template_form_add_topic_topic_end');
         $this->AddHook('template_form_add_topic_question_end','template_form_add_topic_topic_end');
         $this->AddHook('template_form_add_topic_photoset_end','template_form_add_topic_topic_end');
+
+        if (Config::Get('plugin.newpublishfrom.for_comments')) {
+            $this->AddHook('comment_add_after','comment_add_after');
+            $this->AddHook('template_form_add_comment_end','template_form_add_comment_end');
+        }
     }
 
     public function topic_after($arg){
@@ -46,7 +51,29 @@ class PluginNewpublishfrom_HookPublishfrom extends Hook {
         }
     }
 
+    public function comment_add_after($arg){
+        $oComment = $arg['oCommentNew'];
+        $oUser = $this->User_GetUserCurrent();
+        if ($oComment && $oUser && $oUser->isAdministrator()){
+            $uid = intval(getRequest(Config::Get('plugin.newpublishfrom.select_name')));
+            if (!$uid) {
+                $uid = $oUser->getId();
+            }
+            $oComment->setUser($this->User_GetUserById($uid));
+            $oComment->setUserId($uid);
+            $this->PluginNewpublishfrom_Publishfrom_UpdateComment($oComment);
+        }
+    }
+
     public function template_form_add_topic_topic_end(){
+        return $this->template_form_add(true);
+    }
+
+    public function template_form_add_comment_end(){
+        return $this->template_form_add(false);
+    }
+
+    private function template_form_add($bTopic = true){
         if($this->User_GetUserCurrent()->isAdministrator()){
             $oUserCurrent = $this->User_GetUserCurrent();
             $oAuthorId = null;
@@ -61,6 +88,7 @@ class PluginNewpublishfrom_HookPublishfrom extends Hook {
             $this->Viewer_Assign("oUserCurrent",$oUserCurrent);
             $this->Viewer_Assign("sSelectName",Config::Get('plugin.newpublishfrom.select_name'));
             $this->Viewer_Assign("aUserList",$aUserList);
+            $this->Viewer_Assign("bTopic",$bTopic);
             return $this->Viewer_Fetch(Plugin::GetTemplatePath(__CLASS__).'form_select.tpl');
         }
     }
