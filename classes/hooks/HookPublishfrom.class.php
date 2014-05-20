@@ -74,8 +74,8 @@ class PluginNewpublishfrom_HookPublishfrom extends Hook {
     }
 
     private function template_form_add($bTopic = true){
-        if($this->User_GetUserCurrent()->isAdministrator()){
-            $oUserCurrent = $this->User_GetUserCurrent();
+        $oUserCurrent = $this->User_GetUserCurrent();
+        if($oUserCurrent && $oUserCurrent->isAdministrator()){
             $oAuthorId = null;
             if (Router::GetActionEvent() == 'edit') {
                 $oTopic = $this->Topic_GetTopicById(Router::GetParam(0));
