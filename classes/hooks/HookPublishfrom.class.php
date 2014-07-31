@@ -19,6 +19,7 @@ class PluginNewpublishfrom_HookPublishfrom extends Hook {
         $this->AddHook('template_form_add_topic_link_end','template_form_add_topic_topic_end');
         $this->AddHook('template_form_add_topic_question_end','template_form_add_topic_topic_end');
         $this->AddHook('template_form_add_topic_photoset_end','template_form_add_topic_topic_end');
+        $this->AddHook('template_form_add_topic_file_end','template_form_add_topic_topic_end');
 
         if (Config::Get('plugin.newpublishfrom.for_comments')) {
             $this->AddHook('comment_add_after','comment_add_after');
