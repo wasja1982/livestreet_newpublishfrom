@@ -11,8 +11,17 @@
  *
  **/
 
-return array(
-    'publishfrom_label'	=>	'Выберите автора',
-    'publishfrom_note_topic'	=>	'Топик будет полностью принадлежать выбраному Вами пользователю, включая черновик. <br> Черновик лучше сохранять от своего имени',
-    'publishfrom_note_comment'	=>	'Комментарий будет опубликован от имени выбраного Вами пользователя',
-);
+class PluginNewpublishfrom_HookCopyright extends Hook {
+    public function RegisterHook() {
+        $this->AddHook('template_copyright','CopyrightLink',__CLASS__,-10000);
+    }
+
+    public function CopyrightLink() {
+        if (!isset($GLOBALS['ls_wasja_info']) || !$GLOBALS['ls_wasja_info']) {
+            $GLOBALS['ls_wasja_info'] = true;
+            return '<br><a href="http://ls.wasja.info">Plugins for LiveStreet CMS</a>';
+        }
+        return '';
+    }
+}
+?>
